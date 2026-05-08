@@ -1,28 +1,49 @@
-// keof: type operator
 
-type RichpPeoples = {
+
+type RichPeplesVehicle = {
   car: string;
   bike: string;
   cng: string;
 };
 
-type myVehicle = "bike" | "car" | "cng";
-type myVehicle2 = keyof RichpPeoples;
+type MyVicle1 = "bike" | "car" | "cng";
+type MyVicle2 = keyof RichPeplesVehicle;
 
-const myVehicle: myVehicle2 = "bike";
+const myVicle: MyVicle2 = "car";
 
-// keof constrant
+// key of constant
+
+type User = {
+  id: number;
+  name: string;
+  address: {
+    city: string;
+  };
+};
 
 const user = {
-  id: 22,
-  name: "mejba",
+  id: 222,
+  name: "Mezba",
   address: {
     city: "ctg",
   },
 };
 
-const myId = user["id"];
-const myName = user["name"];
-const myAddress = user["address"];
+const myId = user.id;
+const myName = user.name;
+const myAddress = user.address.city;
 
-console.log(myId,myName,myAddress)
+// console.log(myId,myName,myAddress);
+
+const getPropertyFromObj = <T>(obj: T, key:keyof T) => {
+  return obj[key];
+};
+
+const result = getPropertyFromObj(user, "name");
+console.log(result);
+
+const product={
+  brand:"hp"
+}
+
+const result2=getPropertyFromObj(product,'not')
